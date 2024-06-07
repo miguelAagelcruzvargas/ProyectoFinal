@@ -1,0 +1,53 @@
+/* styles/CustomCard.css */
+.btn-danger {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;  /* Reducir el padding */
+    margin: 0;  /* Reducir el margin */
+    width: 18px; /* Ajustar el ancho automáticamente */
+    height: 30px; /* Ajustar la altura automáticamente */
+}
+
+.btn-danger .icon-remove {
+    width: 40px; /* Ajusta el tamaño según sea necesario */
+    height: 40px; /* Ajusta el tamaño según sea necesario */
+    margin: 0;
+}
+
+.btn-danger:hover .icon-remove {
+    color: #3ef15f; /* Cambia el color al pasar el ratón */
+}
+.card {
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 220px; /* Ajusta el ancho de las tarjetas */
+    margin: 10px; /* Ajusta el margen entre las tarjetas */
+  }
+  
+  .card img {
+    width: 100%;
+    height: 150px; /* Ajusta la altura de la imagen */
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 10px; /* Ajusta el padding de la tarjeta */
+    font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
+  }
+  
+  .card-title {
+    font-size: 1rem; /* Ajusta el tamaño de la fuente del título */
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 0.8rem; /* Ajusta el tamaño de la fuente del texto */
+  }
+  

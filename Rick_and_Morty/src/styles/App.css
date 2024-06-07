@@ -1,0 +1,280 @@
+
+
+body {
+  background: url('./src/assets/rick-sanchez_1920x1080_xtrafondos.com.jpg') no-repeat center center fixed; /* Ruta de tu imagen */
+  background-size: cover;
+  color: #fff;
+  font-family:  sans-serif;
+}
+
+.card {
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.input-group {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.btn-gold {
+  background-color: #FFD700;
+  color: #000;
+}
+
+.text-gold {
+  color: #FFD700;
+}
+
+.gradient-text {
+  font-size: 6rem;
+  font-weight: bold;
+  font-style: italic;
+  background: linear-gradient(80deg, #1ace20, #43d6e7, #ff00ff); /* Cambia a colores neón */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: 'Get Schwifty';
+}
+
+.bg-dark {
+  background-color: rgba(0, 0, 0, 0.8) !important; /* Fondo oscuro con transparencia */
+}
+
+.bg-secondary {
+  background-color: rgba(44, 44, 44, 0.8) !important; /* Fondo oscuro con transparencia */
+}
+
+/* Card Styles */
+.card-favorite {
+  background-color: rgba(51, 51, 51, 0.9); /* Fondo oscuro con transparencia */
+  border: 2px solid #FFD700;
+  color: #C0C0C0;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 5px;
+  width: 288px;
+  height: 448px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-favorite:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-favorite .card-header {
+  background-color: #FFD700;
+  color: #000;
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.card-favorite .share-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1rem;
+  color: #FFD700;
+  cursor: pointer;
+}
+
+.card-favorite .card-body {
+  background-color: rgba(44, 44, 44, 0.9); /* Fondo oscuro con transparencia */
+  color: #C0C0C0;
+  overflow-y: auto; /* Allow vertical scrolling if needed */
+  padding: 5px;
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+.card-favorite .card-footer {
+  background-color: rgba(63, 236, 224, 0.5); /* Fondo oscuro con transparencia */
+  color: #FFD700;
+  text-align: center;
+  padding: 5px;
+  font-size: 0.9rem;
+}
+
+.card-favorite .btn-danger {
+  width: 90%;
+  margin: 5px auto;
+}
+
+.card-favorite img {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.favorites-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #FFD700;
+  margin-bottom: 10px;
+}
+
+.favorites-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (max-width: 1200px) {
+  .card-favorite {
+    height: auto;
+  }
+}
+
+@media (max-width: 992px) {
+  .card-favorite {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-favorite {
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-favorite {
+    height: auto;
+  }
+}
+
+/* FilterBar Styles */
+.filter-bar .form-group {
+  margin-bottom: 1rem;
+}
+
+.filter-bar .input-group-text {
+  background-color: #343a40;
+  color: #fff;
+  border: none;
+}
+
+.filter-bar .form-control {
+  background-color: #121212;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+}
+
+/* Memory Game Styles */
+.memory-game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memory-game-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-gap: 10px;
+  margin-bottom: 20px;
+}
+
+.memory-game-card {
+  width: 100px;
+  height: 150px;
+  perspective: 1000px;
+}
+
+.memory-game-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.memory-game-card.flipped .memory-game-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-game-card-front,
+.memory-game-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.memory-game-card-front {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.memory-game-card-front img {
+  width: 100%;
+  height: auto;
+}
+
+.memory-game-card-back {
+  background-color: #aebd21d8;
+  transform: rotateY(180deg);
+}
+
+.smaller-text {
+  font-size: 0.85rem; /* Ajusta este valor según sea necesario */
+}
+/* App.css */
+.input-group .form-control {
+  background-color: #222;
+  color: #5d1551;
+  border: 1px solid #444;
+}
+
+.input-group .form-control::placeholder {
+  color: #bbb;
+}
+
+.input-group .btn-primary {
+  background-color: #ffbd33;
+  border-color: #ffbd33;
+  color: #000;
+}
+
+.input-group .btn-primary:hover {
+  background-color: #ffa500;
+  border-color: #ffa500;
+  color: #bdb1b1;
+}
+.modal-content {
+  max-height: 50vh; /* Máxima altura de la ventana modal */
+  overflow-y: auto; /* Habilitar el desplazamiento vertical si es necesario */
+}
+
+.modal-body {
+  max-height: 50vh; /* Máxima altura del cuerpo de la ventana modal */
+  overflow-y: auto; /* Habilitar el desplazamiento vertical si es necesario */
+  overflow-x: hidden; /* Habilitar el desplazamiento horizontal si es necesario */
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
