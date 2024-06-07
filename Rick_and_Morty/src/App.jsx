@@ -1,37 +1,52 @@
-// Importaciones necesarias de React y librerías
 import React, { useState } from 'react';
-import Swal from 'sweetalert2'; // Librería para mostrar alertas bonitas
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importación de estilos de Bootstrap
-import './styles/App.css'; // Importación de estilos personalizados
-import { useForm } from '../hooks/useForm'; // Hook personalizado para manejar formularios
-import { useFavorites } from '../hooks/useFavorites'; // Hook personalizado para manejar favoritos
-import { useCharacterSearch } from '../hooks/useCharacterSearch'; // Hook personalizado para manejar búsqueda de personajes
-import FavoriteCharacters from './components/FavoriteCharacters'; // Componente para mostrar personajes favoritos
-import CharacterModal from './components/CharacterModal'; // Componente modal para mostrar detalles del personaje
-import MemoryGame from './components/MemoryGame'; // Componente del juego de memoria
-import SearchBar from './components/SearchBar'; // Importación del nuevo componente de búsqueda
-import CharacterCard from './components/CharacterCard'; // Importación del nuevo componente de tarjeta de personaje
+import Swal from 'sweetalert2';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/App.css';
+import './styles/FilterBar.css'; // Importa el nuevo archivo CSS
+import { useFavorites } from '../hooks/useFavorites';
+import { useCharacterSearch } from '../hooks/useCharacterSearch';
+import FavoriteCharacters from './components/FavoriteCharacters';
+import CharacterModal from './components/CharacterModal';
+import MemoryGame from './components/MemoryGame';
+import SearchBar from './components/SearchBar';
+import CharacterCard from './components/CharacterCard';
+import FilterBar from './components/FilterBar'; // Importa el nuevo componente FilterBar
+import Pagination from './components/Pagination'; // Importa el nuevo componente Pagination
 
 function App() {
-  // Definición del estado
-  const { characters, query, setQuery } = useCharacterSearch(); // Usar el hook personalizado para manejar la búsqueda de personajes
-  const { favorites, addFavorite, removeFavorite } = useFavorites(); // Usar el hook personalizado para manejar los favoritos
-  const [selectedCharacter, setSelectedCharacter] = useState(null); // Estado para almacenar el personaje seleccionado para el modal
-  const [showModal, setShowModal] = useState(false); // Estado para controlar la visibilidad del modal
-  const [isMemoryGameActive, setIsMemoryGameActive] = useState(false); // Estado para controlar si el juego de memoria está activo
+  const {
+    characters,
+    query,
+    setQuery,
+    statusFilter,
+    setStatusFilter,
+    speciesFilter,
+    setSpeciesFilter,
+    typeFilter,
+    setTypeFilter,
+    genderFilter,
+    setGenderFilter,
+    handleSearch,
+    clearResults,
+    isLoading,
+    page,
+    totalPages,
+    handlePageChange,
+  } = useCharacterSearch();
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [isMemoryGameActive, setIsMemoryGameActive] = useState(false);
 
-  // Función para mostrar los detalles de un personaje en un modal
   const handleShowDetails = (character) => {
     setSelectedCharacter(character);
     setShowModal(true);
   };
 
-  // Función para iniciar el juego de memoria
   const handleStartMemoryGame = () => {
     setIsMemoryGameActive(true);
   };
 
-  // Renderización del componente principal
   return (
     <div className="container">
       <h1 className="text-center my-4 gradient-text">RICK AND MORTY</h1>
@@ -40,12 +55,32 @@ function App() {
         <MemoryGame characters={favorites.slice(0, 5)} onExit={() => setIsMemoryGameActive(false)} />
       ) : (
         <>
-          <SearchBar searchValue={query} onChange={(e) => setQuery(e.target.value)} onSearch={() => debouncedSearch(query)} />
+          <SearchBar
+            searchValue={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onSearch={handleSearch}
+          />
+          <FilterBar
+            statusFilter={statusFilter}
+            setStatusFilter={setStatusFilter}
+            speciesFilter={speciesFilter}
+            setSpeciesFilter={setSpeciesFilter}
+            typeFilter={typeFilter}
+            setTypeFilter={setTypeFilter}
+            genderFilter={genderFilter}
+            setGenderFilter={setGenderFilter}
+            handleApplyFilters={handleSearch}
+            handleClearResults={clearResults}
+          />
+          {isLoading ? <div>Loading...</div> : null}
           <div className="row">
-            {characters.map(character => (
+            {characters.map((character) => (
               <CharacterCard key={character.id} character={character} onFavorite={addFavorite} />
             ))}
           </div>
+          {characters.length > 0 && (
+            <Pagination page={page} totalPages={totalPages} onPageChange={handlePageChange} />
+          )}
           <hr />
           <FavoriteCharacters favorites={favorites} removeFavorite={removeFavorite} onShowDetails={handleShowDetails} />
           {favorites.length >= 5 && (

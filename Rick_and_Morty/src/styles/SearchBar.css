@@ -9,8 +9,8 @@
 }
 
 .input-group .btn-gold:hover {
-    background-color: #ffa500;
-    border-color: #ffa500;
+    background-color: #a536c7;
+    border-color: #4ac02c;
     color: #000;
 }
 
@@ -28,3 +28,4 @@
     width: 30px; /* Ajusta el tamaño según sea necesario */
     height: 30px; /* Ajusta el tamaño según sea necesario */
 }
+

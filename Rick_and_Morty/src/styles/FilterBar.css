@@ -1,0 +1,57 @@
+.filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los filtros */
+    margin-bottom: 15px;
+  }
+  
+  .filter-bar select,
+  .filter-bar button {
+    height: 38px; /* Altura consistente con la barra de búsqueda */
+    width: 110px; /* Ajustar el ancho según sea necesario */
+    background-color: #000000;
+    color: #fff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 0 10px; /* Espaciado interno */
+    font-size: 0.8rem;
+    color: #dbdbdb;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+  }
+
+
+  /* Estilos para los select */
+.filter-bar select:nth-child(1):hover {
+    background-color: #2ec5a9;
+}
+
+.filter-bar select:nth-child(2):hover {
+    background-color: #f39c12;
+}
+
+.filter-bar select:nth-child(3):hover {
+    background-color: #e74c3c;
+}
+
+.filter-bar select:nth-child(4):hover {
+    background-color: #9b59b6;
+}
+
+  
+
+  
+  .filter-bar button {
+    background-color: #ffc107;
+    border: 1px solid #f2f2f2;
+    width: auto;
+    padding: 0 15px;
+    color: #000000;
+    font-size: 0.9rem;
+  }
+  
+  .filter-bar button:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: #faf7f7; /* Mantener el color del texto visible */
+}

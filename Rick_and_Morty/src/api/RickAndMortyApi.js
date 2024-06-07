@@ -1,19 +1,16 @@
-// Función para obtener personajes por nombre de la API de Rick and Morty
-const getCharacters = async (search) => {
-  // Construye la URL de la API utilizando el término de búsqueda proporcionado
-  //LLMADA 1
-  const url = `https://rickandmortyapi.com/api/character/?name=${search}`;
+const getCharacters = async (search, status, species, type, gender, page = 1) => {
+  let url = `https://rickandmortyapi.com/api/character/?name=${search}&page=${page}`;
 
-  // Realiza una petición HTTP a la URL construida
+  if (status !== "all") url += `&status=${status}`;
+  if (species !== "all") url += `&species=${species}`;
+  if (type !== "all") url += `&type=${type}`;
+  if (gender !== "all") url += `&gender=${gender}`;
+
   const response = await fetch(url);
-
-  // Convierte la respuesta a formato JSON
   const data = await response.json();
 
-  // Devuelve los resultados de los personajes obtenidos de la API
-  return data.results;
-};
-
+  return data;
+}
 // Función para obtener un personaje específico por ID de la API de Rick and Morty
 const getCharacterById = async (id) => {
   // Construye la URL de la API utilizando el ID del personaje
